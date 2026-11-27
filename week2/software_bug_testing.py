@@ -25,10 +25,11 @@ testing_time = estimated_hours * 0.25
 total_estimated_time = estimated_hours + testing_time
 total_estimated_cost = total_estimated_time * hourly_rate
 
-is_critical = "Yes" if bugseverity >= 4 else "No"
-long_fix = "Yes" if estimated_hours > 8 else "No"
-expensive = "Yes" if total_estimated_cost > 1000 else "No"
-urgent = is_critical =="Yes" and reproducible
+
+is_critical = bugseverity >= 4
+long_fix = estimated_hours > 8
+expensive = total_estimated_cost > 1000
+urgent = is_critical and reproducible
 
 print("\n" + "=" *30)
 print("     Bug Report Summary")
